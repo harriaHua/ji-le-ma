@@ -4,13 +4,13 @@
  * @Author: Harria
  * @Date: 2022-09-20 22:58:09
  * @LastEditors: Harria
- * @LastEditTime: 2022-09-21 08:57:44
+ * @LastEditTime: 2022-09-21 18:51:05
 -->
 <template>
   <view class="content">
     <image class="logo" src="/static/logo.png"></image>
     <view>
-      <text class="title">{{ title }}</text>
+      <text class="title">{{ this.$store.state.count }}</text>
       <u-button type="primary">主要按钮</u-button>
     </view>
   </view>
