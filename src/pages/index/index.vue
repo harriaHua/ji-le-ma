@@ -4,14 +4,14 @@
  * @Author: Harria
  * @Date: 2022-09-20 22:58:09
  * @LastEditors: Harria
- * @LastEditTime: 2022-09-21 18:51:05
+ * @LastEditTime: 2022-09-22 16:51:16
 -->
 <template>
   <view class="content">
     <image class="logo" src="/static/logo.png"></image>
     <view>
       <text class="title">{{ this.$store.state.count }}</text>
-      <u-button type="primary">主要按钮</u-button>
+      <u-button type="primary" @click="go">前往home</u-button>
     </view>
   </view>
 </template>
@@ -24,7 +24,13 @@ export default {
     };
   },
   onLoad() {},
-  methods: {},
+  methods: {
+    go() {
+      uni.navigateTo({
+        url: "/pages/home/home",
+      });
+    },
+  },
 };
 </script>
 
