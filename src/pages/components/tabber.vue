@@ -4,12 +4,12 @@
  * @Author: Harria
  * @Date: 2022-09-22 14:23:35
  * @LastEditors: Harria
- * @LastEditTime: 2022-09-22 17:09:35
+ * @LastEditTime: 2022-09-22 21:29:28
 -->
 <template>
   <view>
     <u-tabbar
-      :value="value1"
+      :value="tabber"
       @change="changeTabber"
       :placeholder="true"
       :fixed="true"
