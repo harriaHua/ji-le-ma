@@ -7,55 +7,43 @@
  * @LastEditTime: 2022-09-22 21:29:28
 -->
 <template>
-  <view>
-    <u-tabbar
-      :value="tabber"
-      @change="changeTabber"
-      :placeholder="true"
-      :fixed="true"
-      :activeColor="'#fa4646'"
-    >
-      <u-tabbar-item
-        v-for="item in tabberList"
-        :key="item.icon"
-        :text="item.text"
-        :icon="item.icon"
-        :name="item.name"
-      >
-      </u-tabbar-item>
-    </u-tabbar>
-  </view>
+	<view>
+		<u-tabbar :value="tabber" @change="changeTabber" :placeholder="true" :fixed="true" :activeColor="'#fa4646'">
+			<u-tabbar-item v-for="item in tabberList" :key="item.icon" :text="item.text" :icon="item.icon"
+				:name="item.name">
+			</u-tabbar-item>
+		</u-tabbar>
+	</view>
 </template>
 
 <script>
-export default {
-  data() {
-    name: "tabber";
-    return {
-      tabber: "",
-      tabberList: [
-        {
-          text: "快递",
-          name: "index",
-          icon: "home",
-        },
-        {
-          text: "我的",
-          name: "warning",
-          icon: "account",
-        },
-      ],
-    };
-  },
-  methods: {
-    changeTabber(name) {
-      // this.tabber = name
-      uni.redirectTo({
-        url: `../${name}/${name}`,
-      });
-    },
-  },
-};
+	export default {
+		data() {
+			name: "tabber";
+			return {
+				tabber: "",
+				tabberList: [{
+						text: "快递",
+						name: "index",
+						icon: "home",
+					},
+					{
+						text: "我的",
+						name: "PersonalHomePage",
+						icon: "account",
+					},
+				],
+			};
+		},
+		methods: {
+			changeTabber(name) {
+				// this.tabber = name
+				uni.navigateTo({
+					url: `../${name}/${name}`,
+				});
+			},
+		},
+	};
 </script>
 
 <style lang="scss" scoped></style>

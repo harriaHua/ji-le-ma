@@ -17,6 +17,13 @@
 			"style": {
 				"navigationBarTitleText": "uni-home"
 			}
+		}, {
+			"path": "pages/PersonalHomePage/PersonalHomePage",
+			"style": {
+				"navigationBarTitleText": "我的首页",
+				"enablePullDownRefresh": false
+			}
+
 		}
 	],
 	"globalStyle": {
