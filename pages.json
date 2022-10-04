@@ -1,28 +1,56 @@
 {
-
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		// {
+		//     "path" : "pages/components/choosearea",
+		//     "style" :                                                                                    
+		//     {
+		//         "navigationBarTitleText": "",
+		//         "enablePullDownRefresh": false
+		//     }
+		// },
+		{
+		
+			"path": "pages/address/address",
+			"style": {
+				"navigationBarTitleText": "地址簿"
+			}
+		},
+		{
+		    "path" : "pages/newaddr/newaddr",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "新建地址",
+				"navigationBarBackgroundColor": "#c85d53",
+				"navigationBarTextStyle": "white",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		
 		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
-		}, {
-			"path": "pages/home/home",
-			"style": {
-				"navigationBarTitleText": "uni-home"
-			}
-		},
-		{
-			"path": "pages/note/note",
-			"style": {
-				"navigationBarTitleText": "uni-home"
-			}
+
 		}
-	],
+        ,{
+            "path" : "pages/editaddr/editaddr",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "编辑地址",
+				"navigationBarBackgroundColor": "#c85d53",
+				"navigationBarTextStyle": "white",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
-	}
+	},
+	"uniIdRouter": {}
 }
