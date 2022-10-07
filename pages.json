@@ -1,27 +1,10 @@
 {
-	"pages": [//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		// {
-		//     "path" : "pages/components/choosearea",
-		//     "style" :                                                                                    
-		//     {
-		//         "navigationBarTitleText": "",
-		//         "enablePullDownRefresh": false
-		//     }
-		// },
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-		
-			"path": "pages/address/address",
-			"style": {
-				"navigationBarTitleText": "地址簿"
-			}
-		},
-		{
-		    "path" : "pages/newaddr/newaddr",
+		    "path" : "pages/demo1/demo1",
 		    "style" :                                                                                    
 		    {
-		        "navigationBarTitleText": "新建地址",
-				"navigationBarBackgroundColor": "#c85d53",
-				"navigationBarTextStyle": "white",
+		        "navigationBarTitleText": "余额充值",
 		        "enablePullDownRefresh": false
 		    }
 		    
@@ -32,19 +15,7 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
-
 		}
-        ,{
-            "path" : "pages/editaddr/editaddr",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "编辑地址",
-				"navigationBarBackgroundColor": "#c85d53",
-				"navigationBarTextStyle": "white",
-                "enablePullDownRefresh": false
-            }
-            
-        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

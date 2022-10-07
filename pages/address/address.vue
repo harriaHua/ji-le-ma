@@ -11,7 +11,7 @@
 		<!-- 如果有数据 则遍历显示 -->
 		<view class="show" v-if="data.length>0">
 			<view class="show-item" v-for="(item,index) in data">
-				<view class="show-item-message">
+				<view class="show-item-message" @click="sendaddr(index)">
 					<!-- 圆点 -->
 					<view class="firstn">{{item.name[0]}}</view>
 
@@ -19,7 +19,7 @@
 
 						{{item.area}}{{item.address}}</text>
 					<!-- 数据显示 -->
-					<view class="iconfont" @click="sendinfo(index)">&#xe66e;</view>
+					<view class="iconfont" @click.stop="sendinfo(index)">&#xe66e;</view>
 					<!-- 编辑按钮 -->
 				</view>
 				<button size="mini" @click="showmodal(index)">删除</button>
@@ -93,6 +93,11 @@
 			sendinfo(index) {
 				uni.navigateTo({
 					url: '/pages/editaddr/editaddr?id=' + index //跳转并传参
+				})
+			},
+			sendaddr(index) {
+				uni.navigateTo({
+					url: '/pages/send/index?id=' + index //跳转并传参给寄快递页面
 				})
 			},
 
