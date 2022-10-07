@@ -58,6 +58,12 @@
 		created() {
 			this.list=this.data
 		},
+		onBackPress(event){
+		            uni.redirectTo({
+		                url:'../home/home'
+		            });
+		           return true;
+		},
 		methods: {
 
 			showmodal(index) {
