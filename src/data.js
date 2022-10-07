@@ -8,14 +8,14 @@ export default[
 	},
 	{
 		name:'李四',
-		number:'1581231233',
+		number:'15812312331',
 		area:'四川省成都市青羊区',
 		address:'yyyyyy',
 		code:'123'
 	},
 	{
 		name:'王五',
-		number:'1814564561',
+		number:'18145645611',
 		area:'湖北省荆州市石首市',
 		address:'zzzzzz',
 		code:'123'
