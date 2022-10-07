@@ -21,7 +21,7 @@
 		</view>
 		<view class="swiper-content"><u-swiper class="swiper" :list="swiper" :indicator="true"></u-swiper></view>
 
-		<view class="red-packet">
+		<view class="red-packet" @click="navigate('/pages/untapped/untapped')">
 			<u-icon name="red-packet-fill" size="150rpx" color="#f34646"></u-icon>
 			<view class="red-packet-text">
 				<u--text size="40rpx" color="#fa4646" text="我国宪法是国家的根本法"></u--text>
@@ -57,7 +57,7 @@ export default {
 			notice: '法律执行是法律实现的重要环节,原则是合法性、合理性、信赖保护和效率',
 			baseList: [
 				{
-					name: '66.3',
+					name: this.$store.state.balance,
 					title: '余额'
 				},
 				{
@@ -105,6 +105,11 @@ export default {
 			console.log(this.menuList[index].url);
 			uni.navigateTo({
 				url: this.menuList[index].url
+			});
+		},
+		navigate(u) {
+			uni.navigateTo({
+				url: u
 			});
 		}
 	}

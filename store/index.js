@@ -12,8 +12,18 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  state: {
-    userId: 1,
-  },
+	state: {
+		userId: 1,
+		balance: 2
+	},
+	mutations: {
+		recharge(state, newBalance) {
+			console.log(newBalance);
+			// 变更状态
+
+			Vue.set(state, "balance", newBalance)
+			// state.balance = newBalance
+		}
+	}
 });
 export default store;
