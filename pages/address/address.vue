@@ -15,7 +15,7 @@
 					<!-- 圆点 -->
 					<view class="firstn">{{item.name[0]}}</view>
 
-					<text>{{item.name}}&nbsp;&nbsp;{{item.number.substr(0,3)}}&nbsp;{{item.number.substr(4,3)}}&nbsp;{{item.number.substr(-4)}}
+					<text>{{item.name}}&nbsp;&nbsp;{{item.number.substr(0,3)}}&nbsp;{{item.number.substr(4,4)}}&nbsp;{{item.number.substr(-4)}}
 
 						{{item.area}}{{item.address}}</text>
 					<!-- 数据显示 -->
@@ -57,6 +57,12 @@
 		},
 		created() {
 			this.list=this.data
+		},
+		onBackPress(event){
+		            uni.redirectTo({
+		                url:'../home/home'
+		            });
+		           return true;
 		},
 		methods: {
 
