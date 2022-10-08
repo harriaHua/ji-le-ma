@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/send/index"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "寄快递",
+    "navigationBarBackgroundColor": "#EFEFEF",
+    "backgroundColor": "#EFEFEF"
+  },
+  "usingComponents": {}
+}
