@@ -11,7 +11,7 @@
 		<!-- 如果有数据 则遍历显示 -->
 		<view class="show" v-if="data.length>0">
 			<view class="show-item" v-for="(item,index) in data">
-				<view class="show-item-message" @click="sendaddr(index)">
+				<view class="show-item-message" @click="sendaddr(index,flag)">
 					<!-- 圆点 -->
 					<view class="firstn">{{item.name[0]}}</view>
 
@@ -46,13 +46,17 @@
 <script>
 	import data from "@/src/data.js";
 	export default {
+		onLoad:function(option){
+			this.flag = option.id
+		},
 		data() {
 			return {
 				data,
 				keyword: '',
 				show: false, //判断弹窗是否要出现
 				id: '',
-				list:[]
+				list:[],
+				flag:0
 			}
 		},
 		created() {
@@ -89,10 +93,18 @@
 					url: '/pages/editaddr/editaddr?id=' + index //跳转并传参
 				})
 			},
-			sendaddr(index) {
-				uni.navigateTo({
-					url: '/pages/send/index?id=' + index //跳转并传参给寄快递页面
-				})
+			sendaddr(index,flag) {
+				var pages = getCurrentPages();
+				var prevPage = pages[pages.length-2];
+				var object={
+					i:flag,
+					id:index,
+				}
+				prevPage.onShow(object);
+				uni.navigateBack();
+				/* uni.navigateTo({
+					url: '/pages/send/index?i='+flag+'&id=' + index //跳转并传参给寄快递页面
+				}) */
 			},
 
 			match() {
