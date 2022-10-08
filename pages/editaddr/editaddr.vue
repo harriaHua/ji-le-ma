@@ -33,7 +33,7 @@
 			async submit(e) {
 				// console.log(e)
 				this.data.splice(this.num, 1, e); //将从子组件里修改过后的数据，替换原本的数据
-				uni.navigateTo({
+				uni.navigateBack({
 					url: '/pages/address/address'
 				})
 				// console.log(data);
