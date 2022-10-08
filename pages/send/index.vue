@@ -122,7 +122,7 @@
 		<!-- 保价end -->
 		
 		<!-- 优惠劵 -->
-		<view class="offprice">
+		<view class="offprice" @click="tooff()">
 			<view class="title">
 				优惠劵
 			</view>
@@ -286,6 +286,12 @@
 					url: '/pages/address/address?id=' + 2
 				});
 				
+			},
+			
+			tooff() { //切换至优惠劵页面
+				uni.navigateTo({
+					url:'/pages/untapped/untapped'
+				});
 			}
 		
 		}
