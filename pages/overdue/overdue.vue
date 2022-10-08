@@ -25,7 +25,7 @@
 		},
 		onBackPress(event) {
 			uni.redirectTo({
-				url: "/pages/index/index"
+				url: "/pages/home/home"
 			});
 			return true;
 		},
