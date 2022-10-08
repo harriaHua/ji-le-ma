@@ -4,55 +4,34 @@
 			<view class="user-information">
 				<image src="" mode="" class="profile-img"></image>
 				<view class="user-info-change">
-					<text class="user-name">testusername</text>
-					<u-button @click="changeInfo" class="change-button">
+					<u-text :text="$store.state.userId"></u-text>
+					<u-button
+						customStyle="	width: 140rpx;height: 52rpx;font-size: 28rpx;padding: 10rpx 10rpx;border-radius: 40rpx;">
 						修改信息
 					</u-button>
 				</view>
 				<view class="send-package">
-					<u-button class="send-package-button" shape="circle" @click="SendPackage">
-						<u-icon name="car" color="white" size="37"></u-icon>
-					</u-button>
-					<text class="send-package-text">去寄快递</text>
+					<view class="send-package-button">
+						<homepagebutton iconname="car" iconcolor="white" buttoncolor="red" size="74rpx" text="去寄快递"
+							:customStyle="styleone">
+						</homepagebutton>
+					</view>
 				</view>
 			</view>
 			<view class="nav-bar">
-				<view class="nav-buttons">
-					<u-button class="nav-button-style" color="red" @click="toHomePage">
-						<u-icon name="home" size="31" color="white"></u-icon>
-					</u-button>
-					<text style="font-size: 12px;">首页</text>
-				</view>
-				<view class="nav-buttons" v-for="item in buttontype">
-					<u-button class="nav-button-style">
-						<u-icon :name="item.iconname" size="31" color="black"></u-icon>
-					</u-button>
-					<text style="font-size: 12px;">{{item.text}}</text>
+				<view v-for="item in navbuttontype">
+					<homepagebutton :buttoncolor="item.buttoncolor" :iconname="item.iconname"
+						:iconcolor="item.iconcolor" @jump="jump(item.url)" :text="item.text" :customStyle="styletwo">
+					</homepagebutton>
 				</view>
 			</view>
 			<view class="tools-bar">
-				<text style="font: 22px bold;margin: 7px 18px;">基础功能</text>
-				<view class=" function-hover-one">
-					<view class="function-buttons">
-						<u-button class="function-button-style" color="red" @click="toNote">
-							<u-icon name="file-text" size="31" color="white"></u-icon>
-						</u-button>
-						<text style="font-size: 12px;">我的订单</text>
-					</view>
-					<view class="function-buttons" v-for="item in functionbuttonLineOne">
-						<u-button class="function-button-style" @click="item.action">
-							<u-icon :name="item.iconname" size="31"></u-icon>
-						</u-button>
-						<text style="font-size: 12px;">{{item.text}}</text>
-					</view>
-				</view>
-				<view class="function-hover-two">
-					<view class="function-buttons" v-for="item in functionbuttonLineTwo">
-						<u-button class="function-button-style">
-							<u-icon :name="item.iconname" size="31"></u-icon>
-						</u-button>
-						<text style="font-size: 12px;">{{item.text}}</text>
-					</view>
+				<text style="font: 44rpx bold;margin: 14rpx 36rpx;" class="tools-bar-text">基础功能</text>
+				<view class="function-buttons" v-for="item in functionbutton">
+					<homepagebutton :buttoncolor="item.buttoncolor" :iconname="item.iconname"
+						:iconcolor="item.iconcolor" @jump="jump(item.url)" :text="item.text" :customStyle="styletwo">
+					</homepagebutton>
+
 				</view>
 			</view>
 			<view class="more-func">
@@ -64,12 +43,25 @@
 </template>
 
 <script>
+	import homepagebutton from "../components/homepagebutton.vue"
 	export default {
 		data() {
 			return {
-				buttontype: [{
+				styletwo: "width: 106rpx;height:106rpx;border-radius:20px",
+				styleone: "width: 106rpx;height:106rpx;border-radius:100%",
+				navbuttontype: [{
+						iconname: "home",
+						text: "首页",
+						buttoncolor: "red",
+						iconcolor: "white",
+						url: "/pages/home/home",
+					},
+					{
 						iconname: "rmb-circle",
 						text: "余额",
+						buttoncolor: "",
+						iconcolor: "",
+						url: "/pages/recharge/recharge"
 					},
 					{
 						iconname: "star",
@@ -80,7 +72,14 @@
 						text: "消息",
 					}
 				],
-				functionbuttonLineOne: [{
+				functionbutton: [{
+						iconname: "order",
+						text: "我的订单",
+						buttoncolor: "red",
+						iconcolor: "white",
+						url: "",
+					},
+					{
 						iconname: "map",
 						text: "地址管理",
 						action: ""
@@ -93,8 +92,7 @@
 						iconname: "shopping-cart",
 						text: "我的购物车",
 					},
-				],
-				functionbuttonLineTwo: [{
+					{
 						iconname: "order",
 						text: "账单查询",
 					},
@@ -105,6 +103,7 @@
 					{
 						iconname: "coupon",
 						text: "我的优惠券",
+						url: "/pages/untapped/untapped"
 					},
 					{
 						iconname: "account",
@@ -113,20 +112,14 @@
 				]
 			}
 		},
+		components: {
+			homepagebutton
+		},
 		methods: {
-			changeInfo() {
+			jump(url) {
+				console.log("yes")
 				uni.navigateTo({
-					url: '/pages/ChangeInfo/ChangeInfo'
-				})
-			},
-			toHomePage() {
-				uni.redirectTo({
-					url: '/pages/home/home'
-				})
-			},
-			toNote() {
-				uni.navigateTo({
-					url: '/pages/note/note'
+					url: url
 				})
 			}
 		},
@@ -144,44 +137,36 @@
 		background-color: #ff0000;
 
 		.user-information {
-			height: 100px;
+			height: 200rpx;
 			background-color: #fff;
 			display: flex;
 			justify-content: left;
-			margin: 8px 19px;
-			border-radius: 20px;
+			margin: 16rpx 38rpx;
+			border-radius: 40rpx;
 
 			.profile-img {
-				height: 70px;
-				width: 70px;
-				border: 1px solid #000;
-				margin: 11px 11px;
+				height: 140rpx;
+				width: 140rpx;
+				border: 2rpx solid #000;
+				margin: 22rpx 22rpx;
 				border-radius: 50%;
 			}
 
 			.user-info-change {
-				height: 70px;
-				width: 70px;
-				margin: 10px 21px;
+				height: 140rpx;
+				width: 140rpx;
+				margin: 20rpx 42rpx;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
 
 				.user-name {
 					display: block;
-					width: 90px;
-					height: 30px;
-					font: 18px bold;
+					width: 180rpx;
+					height: 60rpx;
+					font: 36rpx bold;
 					overflow: hidden;
 					text-overflow: ellipsis;
-				}
-
-				.change-button {
-					width: 70px;
-					height: 26px;
-					font-size: 14px;
-					padding: 5px 5px;
-					border-radius: 20px;
 				}
 			}
 
@@ -191,103 +176,47 @@
 				flex-grow: 1;
 
 				.send-package-button {
-					width: 53px;
-					height: 53px;
-					margin: 9px 21px;
+					margin: 18rpx 42rpx;
 					align-self: flex-end;
-					background-color: red;
-				}
-
-				.send-package-text {
-					align-self: flex-end;
-					width: 49px;
-					height: 18px;
-					margin-right: 23px;
-					font-size: 12px;
 				}
 			}
 		}
 
 		.nav-bar {
-			height: 100px;
+			height: 200rpx;
 			background-color: #fff;
 			display: flex;
 			justify-content: space-around;
-			margin: 8px 19px;
-			border-radius: 20px;
+			margin: 16rpx 38rpx;
+			border-radius: 40rpx;
 			align-items: center;
-
-			.nav-buttons {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-
-				.nav-button-style {
-					width: 53px;
-					height: 53px;
-					border-radius: 20px;
-				}
-			}
 
 		}
 
 		.tools-bar {
-			height: 213px;
+			height: 426rpx;
 			background-color: #fff;
-			display: flex;
-			flex-direction: column;
-			flex-wrap: wrap;
-			margin: 8px 19px;
-			border-radius: 20px;
+			display: grid;
+			grid-template-rows: 88rpx repeat(2, 1fr);
+			grid-template-columns: repeat(4, 1fr);
+			margin: 16rpx 38rpx;
+			border-radius: 40rpx;
 
-			.function-hover-one {
-				margin-top: 8px;
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-around;
-
-				.function-buttons {
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-
-					.function-button-style {
-						width: 53px;
-						height: 53px;
-						border-radius: 20px;
-					}
-				}
+			.tools-bar-text {
+				grid-area: 1/1/2/5;
+				margin: 9rpx 18rpx;
 			}
-
-			.function-hover-two {
-				margin-top: 8px;
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-around;
-
-				.function-buttons {
-					display: flex;
-					flex-direction: column;
-					align-items: center;
-
-					.function-button-style {
-						width: 53px;
-						height: 53px;
-						border-radius: 20px;
-					}
-				}
-			}
-
 		}
 
-		.more-func {
-			height: 382px;
-			background-color: #fff;
-			display: flex;
-			flex-direction: column;
-			flex-wrap: wrap;
-			margin: 8px 19px;
-			border-radius: 20px;
-		}
+	}
+
+	.more-func {
+		height: 764rpx;
+		background-color: #fff;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		margin: 16rpx 38rpx;
+		border-radius: 40rpx;
 	}
 </style>

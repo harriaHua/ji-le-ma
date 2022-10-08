@@ -36,13 +36,6 @@
 				"enablePullDownRefresh": false
 			}
 		},
-
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		},
 		{
 			"path": "pages/editaddr/editaddr",
 			"style": {
@@ -55,9 +48,7 @@
 		{
 			"path": "pages/PersonalHomePage/PersonalHomePage",
 			"style": {
-				"navigationBarTitleText": "编辑地址",
-				"navigationBarBackgroundColor": "#c85d53",
-				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "个人中心",
 				"enablePullDownRefresh": false
 			}
 		},
