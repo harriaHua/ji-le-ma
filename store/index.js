@@ -12,8 +12,9 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  state: {
-    userId: 1,
-  },
+	state: {
+		userId: 1,
+		token: 123,
+	},
 });
 export default store;

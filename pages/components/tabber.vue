@@ -17,6 +17,7 @@
 </template>
 
 <script>
+	import store from "@/store/index.js"
 	export default {
 		data() {
 			name: "tabber";
@@ -29,7 +30,7 @@
 					},
 					{
 						text: "我的",
-						name: "warning",
+						name: store.state.token ? "mine" : "login",
 						icon: "account",
 					},
 				],
@@ -39,7 +40,7 @@
 			changeTabber(name) {
 				// this.tabber = name
 				uni.redirectTo({
-					url: `../${name}/${name}`,
+					url: `../${name}/${name}` || `../${name}/index`,
 				});
 			},
 		},

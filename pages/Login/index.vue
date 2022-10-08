@@ -42,10 +42,14 @@
 			</view>
 		</view>
 
-		<u-button text="登录" color="#f34646" :customStyle="btnLogin"></u-button>
+		<u-button text="登录" color="#f34646" :customStyle="btnLogin" @click="goHome"></u-button>
 		<view class="bottom">
 			<view class="bottom-pro">
-				<u--text text="注册新用户" color="#f34646" align="center" margin="10px 0 0" size="0.6em"></u--text>
+				<view>
+					<u--text text="注册新用户" color="#f34646" align="center" margin="10px 0 0" size="0.6em"
+						style="z-index:99" @click="goRegister">注册新用户
+					</u--text>
+				</view>
 				<view class="protocol">
 					注册登录代表您已同意
 					<a href="https://www.uviewui.com" class="a-style">《用户协议》</a>
@@ -106,6 +110,16 @@
 				this.way[e].isActive = true;
 				this.way[other].isActive = false;
 				this.loginWay = e == 1 ? "pass" : "phone";
+			},
+			goHome() {
+				uni.navigateTo({
+					url: '/pages/home/home'
+				});
+			},
+			goRegister() {
+				uni.navigateTo({
+					url: '/pages/Register/index'
+				});
 			}
 		},
 		// onReady() {

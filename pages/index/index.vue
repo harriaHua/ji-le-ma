@@ -7,54 +7,52 @@
  * @LastEditTime: 2022-09-22 16:51:16
 -->
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view>
-			<text class="title">{{ this.$store.state.userId }}</text>
-			<u-button type="primary" @click="go">前往home</u-button>
-		</view>
-	</view>
+	<Login />
 </template>
 
 <script>
-export default {
-	data() {
-		return {
-			title: 'Hello'
-		};
-	},
-	onLoad() {},
-	methods: {
-		go() {
-			uni.navigateTo({
-				url: '/pages/home/home'
-			});
-		}
-	}
-};
+	import Login from "@/pages/Login/index.vue"
+	export default {
+		data() {
+			return {
+				title: 'Hello'
+			};
+		},
+		onLoad() {},
+		methods: {
+			go() {
+				uni.navigateTo({
+					url: '/pages/home/home'
+				});
+			}
+		},
+		components: {
+			Login,
+		},
+	};
 </script>
 
 <style>
-.content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
 
-.logo {
-	height: 200rpx;
-	width: 200rpx;
-	margin: 200rpx auto 50rpx auto;
-}
+	.logo {
+		height: 200rpx;
+		width: 200rpx;
+		margin: 200rpx auto 50rpx auto;
+	}
 
-.text-area {
-	display: flex;
-	justify-content: center;
-}
+	.text-area {
+		display: flex;
+		justify-content: center;
+	}
 
-.title {
-	font-size: 36rpx;
-	color: #8f8f94;
-}
+	.title {
+		font-size: 36rpx;
+		color: #8f8f94;
+	}
 </style>

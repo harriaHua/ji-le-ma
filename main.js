@@ -5,6 +5,7 @@ import Vue from 'vue'
 import uView from '@/uni_modules/uview-ui'
 import request from '@/api/request.js'
 import store from "./store";
+
 Vue.prototype.$request = request
 Vue.prototype.$store = store
 

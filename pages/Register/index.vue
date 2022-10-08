@@ -19,7 +19,7 @@
 				</view>
 			</view>
 		</view>
-		<u-button text="注册" color="#f34646" :customStyle="btnLogin"></u-button>
+		<u-button text="注册" color="#f34646" :customStyle="btnLogin" @click="goLogin"></u-button>
 		<view class="protocol">
 			<u-radio-group>
 				<u-radio label="同意《用户协议》《隐私条款》" labelSize="10px" iconSize="10px" activeColor="#f34646"
@@ -54,6 +54,13 @@
 					width: '60vw',
 					fontWeight: 'bold'
 				}
+			}
+		},
+		methods: {
+			goLogin() {
+				uni.navigateTo({
+					url: '/pages/Login/index'
+				});
 			}
 		}
 	}
