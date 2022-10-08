@@ -25,7 +25,7 @@
 			submit(userinfo) {
 				this.data.push(userinfo);//将新建的数据，放到总数据之后
 				// console.log(data);
-				uni.navigateTo({
+				uni.navigateBack({
 					url: '/pages/address/address'
 				})
 			}
