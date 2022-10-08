@@ -2,9 +2,17 @@
  * @Description: 
  * @Version: 0.1
  * @Author: Harria
+ * @Date: 2022-10-08 23:19:24
+ * @LastEditors: Harria
+ * @LastEditTime: 2022-10-08 23:32:52
+-->
+<!--
+ * @Description: 
+ * @Version: 0.1
+ * @Author: Harria
  * @Date: 2022-09-22 14:23:35
  * @LastEditors: Harria
- * @LastEditTime: 2022-09-22 21:29:28
+ * @LastEditTime: 2022-10-08 23:31:16
 -->
 <template>
 	<view>
@@ -15,6 +23,7 @@
 </template>
 
 <script>
+import store from '@/store/index.js';
 export default {
 	data() {
 		name: 'tabber';
@@ -23,12 +32,12 @@ export default {
 			tabberList: [
 				{
 					text: '快递',
-					name: 'home',
+					name: 'index',
 					icon: 'home'
 				},
 				{
 					text: '我的',
-					name: 'PersonalHomePage',
+					name: store.state.token ? 'PersonalHomePage' : 'login',
 					icon: 'account'
 				}
 			]
@@ -36,8 +45,9 @@ export default {
 	},
 	methods: {
 		changeTabber(name) {
+			// this.tabber = name
 			uni.redirectTo({
-				url: `../${name}/${name}`
+				url: `../${name}/${name}` || `../${name}/index`
 			});
 		}
 	}

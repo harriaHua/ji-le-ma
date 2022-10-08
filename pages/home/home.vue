@@ -78,7 +78,7 @@ export default {
 					name: 'car',
 					mainTitle: '寄快递',
 					deputyTitle: '低至5折',
-					url: ''
+					url: '/pages/send/index'
 				},
 				{
 					name: 'order',

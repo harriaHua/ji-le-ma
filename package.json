@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "async-validator": "^1.11.5",
+    "vue-router": "^3.6.5"
+  }
+}
