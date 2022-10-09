@@ -15,7 +15,9 @@
 				<p>2022年10月4日 到期</p>
 			</view>
 			<view class="button1">
-				<button size="mini" type="warn">去使用</button>
+				<navigator url="../send/index" hover-class="click">
+					<button size="mini" type="warn">去使用</button>
+				</navigator>
 			</view>
 		</view>
 		<view class="box2">
@@ -24,7 +26,9 @@
 				<p>2022年10月5日 到期</p>
 			</view>
 			<view class="button2">
-				<button size="mini" type="warn">去使用</button>
+				<navigator url="../send/index" hover-class="click">
+					<button size="mini" type="warn">去使用</button>
+				</navigator>
 			</view>
 		</view>
 	</view>
