@@ -116,6 +116,12 @@
 				"backgroundColor": "#EFEFEF"
 			}
 
+		},
+		{
+			"path": "pages/bill/bill",
+			"style": {
+				"navigationBarTitleText": "账单"
+			}
 		}
 	],
 	"globalStyle": {

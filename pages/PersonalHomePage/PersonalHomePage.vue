@@ -13,7 +13,7 @@
 				<view class="send-package">
 					<view class="send-package-button">
 						<homepagebutton iconname="car" iconcolor="white" buttoncolor="red" size="74rpx" text="去寄快递"
-							:customStyle="customstyle.styleone" @jump="sendpackage()">
+							:customStyle="customstyle.styleone">
 						</homepagebutton>
 					</view>
 				</view>
@@ -40,21 +40,15 @@
 						:iconcolor="item.iconcolor" @jump="jump(item.url,item.way)" :text="item.text"
 						:customStyle="customstyle.styletwo">
 					</homepagebutton>
-				</view>
-				<view>
-					<u-button @click="scancode" customStyle="width: 106rpx;height:106rpx;border-radius:20px">
-						<u-icon name="scan" size="62rpx"></u-icon>
-					</u-button>
-					<u--text text="扫码取件" size="24rpx" align="center"></u--text>
-				</view>
 
+				</view>
 			</view>
 			<view class="more-func">
 				<view class="more-func-text">
 					<u--text size="44rpx" bold text="其他功能"></u--text>
 				</view>
 				<view class="swiper">
-					<u-swiper :list="swiperList" autoplay="true" indicator circular radius="40rpx"></u-swiper>
+					<u-swiper :list="swiperList" autoplay="true" indicator circular="true" radius="40rpx"></u-swiper>
 				</view>
 				<view class="more-func-button">
 					<view v-for="item in customstyle.stylethree">
@@ -138,12 +132,17 @@
 						url: "/pages/address/address",
 					},
 					{
+						iconname: "scan",
+						text: "扫码取件",
+					},
+					{
 						iconname: "shopping-cart",
 						text: "我的购物车",
 					},
 					{
 						iconname: "order",
 						text: "账单查询",
+						url: "/pages/bill/bill"
 					},
 					{
 						iconname: "bookmark",
@@ -152,14 +151,11 @@
 					{
 						iconname: "coupon",
 						text: "我的优惠券",
-						url: "/pages/untapped/untapped",
-						way: ""
+						url: "/pages/untapped/untapped"
 					},
 					{
 						iconname: "account",
 						text: "切换账号",
-						url: "/pages/Login/index",
-						way: "relaunch"
 					},
 				]
 			}
@@ -168,18 +164,6 @@
 			homepagebutton
 		},
 		methods: {
-			scancode() {
-				uni.scanCode({
-					success(res) {
-						console.log(res.result, res.scanType)
-					}
-				})
-			},
-			sendpackage() {
-				uni.navigateTo({
-					url: "/pages/send/index"
-				})
-			},
 			jump(url, way) {
 				if (way === "relaunch") {
 					console.log("yes")
