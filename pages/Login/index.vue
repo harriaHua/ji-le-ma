@@ -29,20 +29,20 @@
 			<view class="item">
 				<u-icon name="phone" size="24px"></u-icon>
 				<view class="">
-					<u-input :customStyle="inputStyle" type="number" clearable placeholder="请输入账号">
+					<u-input :customStyle="inputStyle" type="number" clearable placeholder="请输入账号" v-model="userId">
 					</u-input>
 				</view>
 			</view>
 			<view class="item">
 				<u-icon name="lock" size="24px"></u-icon>
 				<view class="">
-					<u-input :customStyle="inputStyle" type="number" clearable placeholder="请输入密码">
+					<u-input :customStyle="inputStyle" type="password" clearable placeholder="请输入密码" v-model="password">
 					</u-input>
 				</view>
 			</view>
 		</view>
 
-		<u-button text="登录" color="#f34646" :customStyle="btnLogin" @click="goHome"></u-button>
+		<u-button text="登录" color="#f34646" :customStyle="btnLogin" @click="Login"></u-button>
 		<view class="bottom">
 			<view class="bottom-pro">
 				<view>
@@ -69,9 +69,13 @@
 </template>
 
 <script>
+	import request from "@/api/request.js"
 	export default {
 		data() {
 			return {
+				// 账号密码
+				userId: "",
+				password: "",
 				// 登录方式
 				way: [{
 					name: "手机快速登录",
@@ -111,10 +115,25 @@
 				this.way[other].isActive = false;
 				this.loginWay = e == 1 ? "pass" : "phone";
 			},
-			goHome() {
-				uni.navigateTo({
-					url: '/pages/home/home'
-				});
+			Login() {
+				request.post(
+					'/login', {
+						userId: this.userId,
+						password: this.password
+					},
+				).then(result => {
+					if (result.data.code == 200) {
+						let timer = setTimeout(() => {
+							uni.showToast({
+								title: '登录成功',
+								duration: 1000
+							});
+						}, 0)
+						uni.navigateTo({
+							url: '/pages/home/home'
+						});
+					}
+				})
 			},
 			goRegister() {
 				uni.navigateTo({

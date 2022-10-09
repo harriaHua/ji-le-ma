@@ -11,8 +11,7 @@ const request = (options = {}) => {
 	// 		"Content-Type": "application/x-www-form-urlencoded"
 	// }
 	return new Promise((resolve, reject) => {
-		uni
-			.request({
+		uni.request({
 				url: baseUrl + options.url || "",
 				method: options.type || "GET",
 				data: options.data || {},
