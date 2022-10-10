@@ -6,19 +6,21 @@
 				<text>账单明细</text>
 			</view>
 			<view class="right">
-				<datetimepicker />
+				<datetimepicker @sendtime="sendtime" />
 			</view>
 		</view>
 		<view class="bill">
-			<view class="data">
-				<view class="left">
-					<p>运费</p>
-					<span>2022年10月8日11:22:09</span>
-				</view>
-				<view class="right">
-					<span>¥ -18</span>
-				</view>
+			<view class="data" v-for="item in bill"  v-if="item.date.slice(0, 10) === select">
+					<view class="left">
+						<p>{{item.name}}</p>
+						<span>{{item.date}}</span>
+					</view>
+					<view class="right">
+						<span>{{item.variance}}</span>
+					</view>
 			</view>
+
+
 
 		</view>
 	</view>
@@ -29,11 +31,35 @@
 	export default {
 		data() {
 			return {
-				show: true
+				select: '2022-09-09',
+				bill: [],
 			}
 		},
 		methods: {
+			async request() {
+				let result = await uni.request({
+					url: "http://jilema.nat100.top/getBill",
+					method: "POST",
+					header: {
+						'content-type': 'application/x-www-form-urlencoded'
+					},
+					data: {
+						userId: 1,
+						date: ''
+					},
+					success: (e) => {
+						this.bill = e.data.data;
+					}
+				});
+			},
 
+			sendtime(e) {
+				this.select = e;
+			}
+		},
+
+		onLoad() {
+			this.request();
 		},
 		components: {
 			Datetimepicker
@@ -76,7 +102,7 @@
 
 			.right {
 				width: 30%;
-				height: 50px;
+				height: 80px;
 				color: #fff;
 				font-size: 20px;
 			}
@@ -97,19 +123,20 @@
 				padding: 10px;
 				display: flex;
 				justify-content: space-between;
-				
-				.left{
-					p{
+
+				.left {
+					p {
 						font-size: 22px;
 					}
-					span{
+
+					span {
 						font-size: 12px;
 						color: #d9d9d9;
 					}
 				}
-				
-				.right{
-					span{
+
+				.right {
+					span {
 						font-size: 24px;
 						color: #ff5b5b;
 					}

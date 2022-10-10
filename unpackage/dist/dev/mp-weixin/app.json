@@ -1,6 +1,20 @@
 {
   "pages": [
-    "pages/send/index"
+    "pages/index/index",
+    "pages/home/home",
+    "pages/note/note",
+    "pages/Login/index",
+    "pages/Register/index",
+    "pages/address/address",
+    "pages/newaddr/newaddr",
+    "pages/editaddr/editaddr",
+    "pages/PersonalHomePage/PersonalHomePage",
+    "pages/recharge/recharge",
+    "pages/untapped/untapped",
+    "pages/used/used",
+    "pages/overdue/overdue",
+    "pages/send/index",
+    "pages/bill/bill"
   ],
   "subPackages": [],
   "window": {
@@ -9,5 +23,6 @@
     "navigationBarBackgroundColor": "#EFEFEF",
     "backgroundColor": "#EFEFEF"
   },
+  "permission": {},
   "usingComponents": {}
 }
