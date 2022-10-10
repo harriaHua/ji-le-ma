@@ -1,9 +1,9 @@
 <template>
-		<usertable :olduser=olduser @submit="submit"></usertable>
+		<usertable @submit="submit"></usertable>
 </template>
 
 <script>
-	import data from "@/src/data.js"
+	// import data from "@/src/data.js"
     import usertable from "../components/usertable.vue"
 	export default {
 		components:{
@@ -11,20 +11,11 @@
 		},
 		data() {
 			return {
-				data,
-				olduser: {
-					name: '',
-					number: '',
-					area: '',
-					address: '',
-					code: ''
-					}
 			}
 		},
 		methods: {
-			submit(userinfo) {
-				this.data.push(userinfo);//将新建的数据，放到总数据之后
-				// console.log(data);
+			async submit(e) {
+				let res = await this.$request.post('/addAddress', {...e,userId:this.$store.state.userId});
 				uni.navigateBack({
 					url: '/pages/address/address'
 				})
