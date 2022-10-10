@@ -19328,37 +19328,7 @@ module.exports = index_cjs;
 /* 185 */,
 /* 186 */,
 /* 187 */,
-/* 188 */
-/*!***********************************!*\
-  !*** E:/MyNode/新建文件夹/src/data.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = [
-{
-  name: '张三',
-  number: '13145678912',
-  area: '四川省成都市双流区',
-  address: 'xxxxxxx',
-  code: '123' },
-
-{
-  name: '李四',
-  number: '15812312331',
-  area: '四川省成都市青羊区',
-  address: 'yyyyyy',
-  code: '123' },
-
-{
-  name: '王五',
-  number: '18145645611',
-  area: '湖北省荆州市石首市',
-  address: 'zzzzzz',
-  code: '123' }];exports.default = _default;
-
-/***/ }),
+/* 188 */,
 /* 189 */,
 /* 190 */,
 /* 191 */,
@@ -19418,7 +19388,36 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 245 */,
 /* 246 */,
 /* 247 */,
-/* 248 */,
+/* 248 */
+/*!***********************************!*\
+  !*** E:/MyNode/新建文件夹/src/data.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = [{
+  name: '张三',
+  number: '13145678912',
+  area: '四川省成都市双流区',
+  address: 'xxxxxxx',
+  code: '123' },
+
+{
+  name: '李四',
+  number: '15812312331',
+  area: '四川省成都市青羊区',
+  address: 'yyyyyy',
+  code: '123' },
+
+{
+  name: '王五',
+  number: '18145645611',
+  area: '湖北省荆州市石首市',
+  address: 'zzzzzz',
+  code: '123' }];exports.default = _default;
+
+/***/ }),
 /* 249 */,
 /* 250 */,
 /* 251 */,

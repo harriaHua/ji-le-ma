@@ -11,7 +11,7 @@
 		<view class="notice-bar"><u-notice-bar :text="notice"></u-notice-bar></view>
 
 		<view class="statistics">
-			<u-grid :border="false" @click="click" :col="4">
+			<u-grid :border="false" @click="click" :col="3">
 				<u-grid-item v-for="(baseListItem, baseListIndex) in baseList" :key="baseListIndex">
 					<text class="amount-text">{{ baseListItem.name }}</text>
 					<text class="grid-text">{{ baseListItem.title }}</text>
@@ -61,15 +61,11 @@ export default {
 					title: '余额'
 				},
 				{
-					name: '33',
-					title: '本月运单数'
-				},
-				{
-					name: '22',
+					name: this.$store.state.billNum,
 					title: '运单总数'
 				},
 				{
-					name: '2',
+					name: this.$store.state.save,
 					title: '累计节省'
 				}
 			],
@@ -150,7 +146,10 @@ export default {
 
 	.statistics {
 		width: 100%;
-
+		.u-grid {
+			display: flex;
+			justify-content: space-evenly !important;
+		}
 		.amount-text {
 			font-size: 40rpx;
 			color: #556484;
