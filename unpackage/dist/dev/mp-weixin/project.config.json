@@ -6,9 +6,9 @@
   },
   "setting": {
     "urlCheck": false,
-    "es6": false,
-    "postcss": false,
-    "minified": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
     "newFeature": true,
     "bigPackageSizeSupport": true,
     "babelSetting": {
@@ -18,9 +18,9 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "",
-  "appid": "wxadb0a958ca221963",
-  "projectname": "send",
+  "libVersion": "2.25.4",
+  "appid": "wx4dd520954ada2ca1",
+  "projectname": "ji-le-ma",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",

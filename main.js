@@ -8,6 +8,7 @@
  */
 import App from "./App";
 import "./static/iconfont.css";
+// import axios from "@/node_modules/axios"
 
 // #ifndef VUE3
 import Vue from "vue";
@@ -17,13 +18,16 @@ import store from "./store";
 
 Vue.prototype.$request = request;
 Vue.prototype.$store = store;
-
+// $axios发请求
+// import axios from '@/utils/https.js';
+// Vue.prototype.$axios = axios
+// console.log(this.$axios)
 Vue.use(uView);
 Vue.config.productionTip = false;
 App.mpType = "app";
 const app = new Vue({
-  ...App,
-  store,
+	...App,
+	store,
 });
 app.$mount();
 // #endif
@@ -31,9 +35,9 @@ app.$mount();
 // #ifdef VUE3
 import { createSSRApp } from "vue";
 export function createApp() {
-  const app = createSSRApp(App);
-  return {
-    app,
-  };
+	const app = createSSRApp(App);
+	return {
+		app,
+	};
 }
 // #endif
