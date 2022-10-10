@@ -20,19 +20,22 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  state: {
-    userId: 1,
-    balance: 2,
-    token: 123,
-  },
-  mutations: {
-    recharge(state, newBalance) {
-      console.log(newBalance);
-      // 变更状态
+	state: {
+		userId: 1,
+		balance: 2,
+		password: "",
+		balance: 0,
+		save: 0,
+		username: ""
+	},
+	mutations: {
+		recharge(state, newBalance) {
+			console.log(newBalance);
+			// 变更状�
 
-      Vue.set(state, "balance", newBalance);
-      // state.balance = newBalance
-    },
-  },
+			Vue.set(state, "balance", newBalance);
+			// state.balance = newBalance
+		},
+	},
 });
 export default store;

@@ -109,16 +109,16 @@ export default {
 	},
 	methods: {
 		async start() {
-			let res = await this.$request.post('/login', {
-				userId: 1,
-				password: 2
-			});
-			res = res.data.data;
-			for (let s in res) {
-				this.$store.state[s] = res[s];
-			}
-			this.baseList[0].name = this.$store.state.balance;
-			console.log(this.$store.state);
+			// let res = await this.$request.post('/login', {
+			// 	userId: 1,
+			// 	password: 2
+			// });
+			// res = res.data.data;
+			// for (let s in res) {
+			// 	this.$store.state[s] = res[s];
+			// }
+			// this.baseList[0].name = this.$store.state.balance;
+			// console.log(this.$store.state);
 			// this.$store.state.balance=;
 		},
 		clickMenu(index) {

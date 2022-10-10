@@ -18000,21 +18000,24 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 3));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 141));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} /**
-                                                                                                                                                   * @Description:
-                                                                                                                                                   * @Version: 0.1
-                                                                                                                                                   * @Author: Harria
-                                                                                                                                                   * @Date: 2022-10-08 23:19:24
-                                                                                                                                                   * @LastEditors: Harria
-                                                                                                                                                   * @LastEditTime: 2022-10-08 23:33:32
-                                                                                                                                                   */ /**
-                                                                                                                                                       * @Description:
-                                                                                                                                                       * @Version: 0.1
-                                                                                                                                                       * @Author: Harria
-                                                                                                                                                       * @Date: 2022-09-21 18:49:16
-                                                                                                                                                       * @LastEditors: Harria
-                                                                                                                                                       * @LastEditTime: 2022-10-08 23:27:44
-                                                                                                                                                       */_vue.default.use(_vuex.default);var store = new _vuex.default.Store({ state: { userId: 1, balance: 2, token: 123 }, mutations: { recharge: function recharge(state, newBalance) {console.log(newBalance); // 变更状态
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 141));var _state;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+
+_vue.default.use(_vuex.default);
+
+var store = new _vuex.default.Store({
+  state: (_state = {
+    userId: 1,
+    balance: 2,
+    password: "" }, _defineProperty(_state, "balance",
+  0), _defineProperty(_state, "save",
+  0), _defineProperty(_state, "username",
+  ""), _state),
+
+  mutations: {
+    recharge: function recharge(state, newBalance) {
+      console.log(newBalance);
+      // 变更状�
+
       _vue.default.set(state, "balance", newBalance);
       // state.balance = newBalance
     } } });var _default =

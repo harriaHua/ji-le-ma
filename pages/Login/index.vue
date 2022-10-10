@@ -123,15 +123,28 @@
 					},
 				).then(result => {
 					if (result.data.code == 200) {
+						for (let item in result.data.messages) {
+							// console.log(item);
+							this.$store.state[item] = result.data.message[item]
+						}
+						// console.log(this.$store.state);
 						let timer = setTimeout(() => {
 							uni.showToast({
-								title: '登录成功',
+								title: result.data.message,
 								duration: 1000
 							});
 						}, 0)
 						uni.navigateTo({
 							url: '/pages/home/home'
 						});
+					}
+					if (result.data.code == 401) {
+						let timer = setTimeout(() => {
+							uni.showToast({
+								title: result.data.message,
+								duration: 1000
+							});
+						}, 0)
 					}
 				})
 			},

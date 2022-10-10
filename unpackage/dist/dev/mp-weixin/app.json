@@ -13,7 +13,8 @@
     "pages/untapped/untapped",
     "pages/used/used",
     "pages/overdue/overdue",
-    "pages/send/index"
+    "pages/send/index",
+    "pages/bill/bill"
   ],
   "subPackages": [],
   "window": {
