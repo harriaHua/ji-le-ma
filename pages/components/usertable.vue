@@ -2,25 +2,25 @@
 	<view class="content">
 		<view class="user">
 			<text>姓名:</text>
-			<input type="text" v-model="userinfo.name" placeholder="收货人姓名">
+			<input type="text" v-model="userinfo.toName" placeholder="收货人姓名">
 		</view>
 		<view class="user">
 			<text>电话:</text>
-			<input type="number" v-model="userinfo.number" placeholder="收货人手机号">
+			<input type="phone" v-model="userinfo.phone" placeholder="收货人手机号">
 		</view>
 		<view class="user">
 			<text>地区:</text>
-			<input type="text" v-model="userinfo.area" @click="showPicker" placeholder="省/市/区">
+			<input type="text" v-model="userinfo.location" @click="showPicker" placeholder="省/市/区">
 			<!-- 选择器 -->
 			<chooser :show="show" @cancel="cancel" @confirm="confirm"></chooser>
 		</view>
 		<view class="user">
 			<text>详细地址:</text>
-			<input type="text" v-model="userinfo.address" placeholder="街道门牌,楼层房间号">
+			<input type="text" v-model="userinfo.detail" placeholder="街道门牌,楼层房间号">
 		</view>
 		<view class="user">
 			<text>邮政编码:</text>
-			<input type="number" v-model="userinfo.code" placeholder="邮政编码">
+			<input type="phone" v-model="userinfo.postCode" placeholder="邮政编码">
 		</view>
 		<view class="bottom">
 			<button @click="submit(userinfo)">保存</button>
@@ -41,48 +41,69 @@
 		components: {
 			chooser
 		},
-		props: ['olduser'],
+		props: ['addressId'],
 		name: "usertable",
 		data() {
 			return {
-				userinfo: this.olduser,
+				userinfo: { location:''},
 				show: false,
 				alertshow: false,
 				message: ''
 			}
 		},
 		watch: {
-			olduser(newVal, oldVal) {
-				this.userinfo = newVal;
-			}
+			async addressId(newVal, oldVal) {
+				this.addressId = newVal;
+				console.log(this.addressId)
+				let res = await this.$request.post('/getAddressById', {
+					addressId: this.addressId
+				});
+				this.userinfo = res.data.data
+
+			},
 		},
 		methods: {
-			submit(userinfo) {
-				for (let i = 0; i < (Object.values(userinfo)).length; i++) {
-					if ((Object.values(userinfo))[i] == '') {
-						this.alertshow = true
-						this.message = "信息不能为空"
-						return
-
-					}
-					if ((userinfo.number.length) != 11) {
-						this.alertshow = true
-						this.message = "11位手机号"
-						return
-					}
+			async submit(userinfo) {
+				// console.log(Object.values(this.userinfo))
+				if (!userinfo.toName||!userinfo.location||!userinfo.phone||!userinfo.postCode||!userinfo.detail) {
+					this.alertshow = true
+					this.message = "信息不能为空"
+					return
 				}
+				if ((userinfo.phone.length) != 11) {
+					this.alertshow = true
+					this.message = "11位手机号"
+					return
+				}
+
 				// console.log(typeof((Object.values(userinfo))[i]))
 
-				this.$emit("submit", userinfo)//将存下的数据发给父组件
-				
-				// console.log(Object.values(userinfo))
+
+				//将存下的数据发给父组件
+				let info = {
+					addressId: this.addressId,
+					toName: userinfo.toName,
+					phone: userinfo.phone,
+					location: userinfo.location,
+					detail: userinfo.detail,
+					postCode: userinfo.postCode
+				}
+				// console.log(info)
+				// if ((this.userinfo.phone.length) != 11) {
+				// 	this.alertshow = true
+				// 	this.message = "11位手机号"
+				// 	return
+				// }
+				this.$emit("submit", info)
 
 			},
 			showPicker() {
+				console.log(1)
 				this.show = true
 			},
 			confirm(e) {
-				this.userinfo.area = e.value[0] + e.value[1] + e.value[2]
+				console.log(e)
+				this.userinfo.location = e.value[0] + e.value[1] + e.value[2]
 				this.show = false
 			},
 			cancel() {
