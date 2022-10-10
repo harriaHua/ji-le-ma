@@ -9,10 +9,11 @@
 				<view class="button">已过期</view>
 			</navigator>
 		</view>
-		<view class="box1">
-			<view class="text">
-				<p>5元优惠券</p>
-				<p>2022年9月10日 到期</p>
+		<view class="box1" v-if="list.length>0">
+			<view class="coupon" v-for="(item,index) in list">
+				<text>{{item.name}}
+					{{item.date.substr(0,10)}}&nbsp;&nbsp;到期
+				</text>
 			</view>
 		</view>
 	</view>
@@ -21,13 +22,24 @@
 <script>
 	export default {
 		data() {
-			return {};
+			return {
+				list: [],
+				status: '已使用'
+			};
 		},
 		onBackPress(event) {
 			uni.redirectTo({
 				url: "/pages/home/home"
 			});
 			return true;
+		},
+		async onShow() {
+			let res = await this.$request.post("/getCoupons", {
+				userId: this.$store.state.userId,
+				status: this.status,
+			});
+			this.list = res.data.data;
+			console.log(res.data.data);
 		},
 	}
 </script>

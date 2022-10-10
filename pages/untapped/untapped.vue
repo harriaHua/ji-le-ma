@@ -9,10 +9,11 @@
 				<view class="button">已过期</view>
 			</navigator>
 		</view>
-		<view class="box1">
-			<view class="text">
-				<p>3元优惠券</p>
-				<p>2022年10月4日 到期</p>
+		<view class="box1" v-if="list.length>0">
+			<view class="coupon" v-for="(item,index) in list">
+				<text>{{item.name}}
+					{{item.date.substr(0,10)}}&nbsp;&nbsp;到期
+				</text>
 			</view>
 			<view class="button1">
 				<navigator url="../send/index" hover-class="click">
@@ -20,16 +21,9 @@
 				</navigator>
 			</view>
 		</view>
-		<view class="box2">
-			<view class="text">
-				<p>4元优惠券</p>
-				<p>2022年10月5日 到期</p>
-			</view>
-			<view class="button2">
-				<navigator url="../send/index" hover-class="click">
-					<button size="mini" type="warn">去使用</button>
-				</navigator>
-			</view>
+		<view class="box1" v-else>
+			<u-empty>
+			</u-empty>
 		</view>
 	</view>
 </template>
@@ -37,13 +31,24 @@
 <script>
 	export default {
 		data() {
-			return {};
+			return {
+				list: [],
+				status: '未使用'
+			};
 		},
 		onBackPress(event) {
 			uni.redirectTo({
 				url: "/pages/home/home"
 			});
 			return true;
+		},
+		async onShow() {
+			let res = await this.$request.post("/getCoupons", {
+				userId: this.$store.state.userId,
+				status: this.status,
+			});
+			this.list = res.data.data;
+			console.log(res.data.data);
 		},
 	}
 </script>
@@ -81,16 +86,4 @@
 		margin-top: 5px;
 	}
 
-	.box2 {
-		border-width: 2px 0 2px 0;
-		border-style: solid;
-		border-color: darkgray;
-		margin-top: 15px;
-		display: flex;
-		justify-content: space-around;
-	}
-
-	.button2 {
-		margin-top: 5px;
-	}
 </style>
