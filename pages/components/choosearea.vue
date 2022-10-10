@@ -7,6 +7,12 @@
 	export default {
 		name: "chooser",
 		props: ['show'],
+		watch: {
+			async show(newVal, oldVal) {
+				this.show = newVal;
+				console.log(this.show)
+			}
+		},
 		data() {
 			return {
 				// loading: false,
