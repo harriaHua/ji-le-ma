@@ -5,7 +5,8 @@
 			<view class="item">
 				<u-icon name="phone" size="24px"></u-icon>
 				<view class="">
-					<u-input :customStyle="inputStyle" type="number" clearable placeholder="请输入手机号码"></u-input>
+					<u-input :customStyle="inputStyle" type="number" clearable placeholder="请输入手机号码" v-model="userId">
+					</u-input>
 				</view>
 				<view class="">
 					<u-button :customStyle="btnGetCode" text="获取验证码" color="#f34646"></u-button>
@@ -14,12 +15,19 @@
 			<view class="item">
 				<u-icon name="lock" size="24px"></u-icon>
 				<view class="">
-					<u-input :customStyle="inputStyle" type="number" clearable placeholder="请输入验证码">
+					<u-input :customStyle="inputStyle" type="number" clearable placeholder="请输入验证码" v-model="code">
+					</u-input>
+				</view>
+			</view>
+			<view class="item">
+				<u-icon name="lock" size="24px"></u-icon>
+				<view class="">
+					<u-input :customStyle="inputStyle" type="password" clearable placeholder="请设置密码" v-model="password">
 					</u-input>
 				</view>
 			</view>
 		</view>
-		<u-button text="注册" color="#f34646" :customStyle="btnLogin" @click="goLogin"></u-button>
+		<u-button text="注册" color="#f34646" :customStyle="btnLogin" @click="Register"></u-button>
 		<view class="protocol">
 			<u-radio-group>
 				<u-radio label="同意《用户协议》《隐私条款》" labelSize="10px" iconSize="10px" activeColor="#f34646"
@@ -32,9 +40,15 @@
 </template>
 
 <script>
+	import request from "@/api/request.js"
 	export default {
 		data() {
 			return {
+				// 注册信息
+				userId: "",
+				code: "",
+				password: "",
+				// 样式
 				btnGetCode: {
 					borderRadius: '4px',
 					height: '5vh',
@@ -57,10 +71,25 @@
 			}
 		},
 		methods: {
-			goLogin() {
-				uni.navigateTo({
-					url: '/pages/Login/index'
-				});
+			Register() {
+				request.post(
+					'/addUser', {
+						userId: this.userId,
+						password: this.password
+					},
+				).then(result => {
+					if (result.data.code == 200) {
+						let timer = setTimeout(() => {
+							uni.showToast({
+								title: '注册成功',
+								duration: 1000
+							});
+						}, 0)
+						uni.navigateTo({
+							url: '/pages/Login/index'
+						});
+					}
+				})
 			}
 		}
 	}
