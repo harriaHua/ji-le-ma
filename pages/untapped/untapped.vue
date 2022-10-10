@@ -9,16 +9,15 @@
 				<view class="button">已过期</view>
 			</navigator>
 		</view>
-		<view class="box1" v-if="list.length>0">
-			<view class="coupon" v-for="(item,index) in list">
-				<text>{{item.name}}
+		<view class="box1" v-if="list.length>0" v-for="(item,index) in list">
+			<view class="coupon">
+				<text>
+					{{item.name}}
 					{{item.date.substr(0,10)}}&nbsp;&nbsp;到期
 				</text>
 			</view>
 			<view class="button1">
-				<navigator url="../send/index" hover-class="click">
-					<button size="mini" type="warn">去使用</button>
-				</navigator>
+					<button size="mini" type="warn" @click="jump(index)" hover-class="click">去使用</button>
 			</view>
 		</view>
 		<view class="box1" v-else>
@@ -50,6 +49,15 @@
 			this.list = res.data.data;
 			console.log(res.data.data);
 		},
+		methods:{
+			jump(index){
+				console.log(this.list[index].couponId)
+				uni.navigateTo({
+					url:"../send/index?id=" + this.list[index].quota
+				})
+			},
+		}
+		
 	}
 </script>
 
@@ -81,9 +89,11 @@
 		display: flex;
 		justify-content: space-around;
 	}
-
+	
 	.button1 {
-		margin-top: 5px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 
 </style>

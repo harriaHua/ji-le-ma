@@ -9,8 +9,8 @@
 			</navigator>
 			<view class="button" hover-class="click">已过期</view>
 		</view>
-		<view class="box1" v-if="list.length>0">
-			<view class="coupon" v-for="(item,index) in list">
+		<view class="box1" v-if="list.length>0" v-for="(item,index) in list">
+			<view class="coupon">
 				<text>{{item.name}}
 					{{item.date.substr(0,10)}}&nbsp;&nbsp;到期
 				</text>
