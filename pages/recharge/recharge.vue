@@ -69,7 +69,7 @@ export default {
 			}
 		},
 		async handleRechargeBtn() {
-			if (this.selectRecharge !== 0) {
+			if (this.selectRecharge !== 0 && this.selectRecharge !== '') {
 				// this.curRecharge += Number(this.selectRecharge);
 				// 调用充值接口
 				let res = await this.$request.post('/recharge', {
