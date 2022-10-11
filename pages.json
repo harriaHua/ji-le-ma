@@ -16,13 +16,13 @@
 		{
 			"path": "pages/home/home",
 			"style": {
-				"navigationBarTitleText": "uni-home"
+				"navigationBarTitleText": "主页"
 			}
 		},
 		{
 			"path": "pages/note/note",
 			"style": {
-				"navigationBarTitleText": "uni-home"
+				"navigationBarTitleText": "快递单"
 			}
 		},
 		{

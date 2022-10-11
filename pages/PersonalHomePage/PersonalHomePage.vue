@@ -4,7 +4,7 @@
 			<view class="user-information">
 				<image src="" mode="" class="profile-img"></image>
 				<view class="user-info-change">
-					<u-text :text="$store.state.userId"></u-text>
+					<u-text :text="username"></u-text>
 					<u-button
 						customStyle="width: 140rpx;height: 52rpx;font-size: 28rpx;padding: 10rpx 10rpx;border-radius: 40rpx;">
 						修改信息
@@ -66,6 +66,7 @@
 	export default {
 		data() {
 			return {
+				username:this.$store.state.username,
 				swiperList: [
 					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
 					'https://cdn.uviewui.com/uview/swiper/swiper2.png',

@@ -26,7 +26,7 @@ import Datetimepicker from '@/pages/components/datetimepicker.vue';
 export default {
 	data() {
 		return {
-			select: '2022-09-09',
+			select: '2022-10-11',
 			bill: []
 		};
 	},
