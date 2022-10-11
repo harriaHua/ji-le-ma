@@ -52,9 +52,19 @@
 		methods:{
 			jump(index){
 				console.log(this.list[index].couponId)
+				let obj = {
+					id:this.list[index].quota,
+					cid:this.list[index].couponId
+				}
+				var pages = getCurrentPages();
+				var prevPage = pages[pages.length-2];
+				prevPage.$vm.otherFun(obj);
+				uni.navigateBack();
+
+				/* console.log(this.list[index].couponId)
 				uni.navigateTo({
 					url:"../send/index?id=" + this.list[index].quota
-				})
+				}) */
 			},
 		}
 		
