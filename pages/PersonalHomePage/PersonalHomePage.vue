@@ -4,7 +4,7 @@
 			<view class="user-information">
 				<image src="" mode="" class="profile-img"></image>
 				<view class="user-info-change">
-					<u-text :text="username"></u-text>
+					<u-text :text="$store.state.userId"></u-text>
 					<u-button
 						customStyle="width: 140rpx;height: 52rpx;font-size: 28rpx;padding: 10rpx 10rpx;border-radius: 40rpx;">
 						修改信息
@@ -48,7 +48,8 @@
 					<u--text size="44rpx" bold text="其他功能"></u--text>
 				</view>
 				<view class="swiper">
-					<u-swiper :list="swiperList" autoplay="true" indicator circular="true" radius="40rpx"></u-swiper>
+					<u-swiper :list="swiperList" :autoplay="true" :indicator="true" :circular="true" radius="40rpx">
+					</u-swiper>
 				</view>
 				<view class="more-func-button">
 					<view v-for="item in customstyle.stylethree">
@@ -66,7 +67,6 @@
 	export default {
 		data() {
 			return {
-				username:this.$store.state.username,
 				swiperList: [
 					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
 					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
@@ -167,18 +167,26 @@
 		methods: {
 			jump(url, way) {
 				if (way === "relaunch") {
-					console.log("yes")
 					uni.reLaunch({
 						url: url
 					})
 				} else {
-					console.log("no")
 					uni.navigateTo({
 						url: url
 					})
 				}
 			}
 		},
+		onReady() {
+			if (this.$store.state.userId == null) {
+				uni.showModal({
+					content: "please log in"
+				})
+				uni.reLaunch({
+					url: "/pages/Login/index"
+				})
+			}
+		}
 	}
 </script>
 
@@ -209,7 +217,7 @@
 				border-radius: 50%;
 			}
 
-			.user-info-change {
+			.user-info {
 				height: 140rpx;
 				width: 140rpx;
 				margin: 20rpx 42rpx;
